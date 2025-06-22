@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jet Clock with Social Icons</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <style>
+    body {
+      background: linear-gradient(to right, #30a9de, lightblue);
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .fighter-jet {
+      font-size: 100px;
+      position: fixed;
+      top: 38%; /* ĐÃ HẠ THẤP XUỐNG */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: jet 1s infinite;
+      z-index: 2;
+    }
+
+    .pilot-name {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+      z-index: 3;
+    }
+
+    .copyright {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      z-index: 10;
+    }
+
+    .clouds .cloud {
+      position: absolute;
+      color: #fff;
+    }
+
+    .clouds .cloud:nth-child(n) { left: 100%; }
+    .clouds .cloud:nth-child(1) { font-size: 2em; top: 10%; animation: cloud 6s linear infinite; animation-delay: 0.1s; }
+    .clouds .cloud:nth-child(2) { font-size: 1.5em; top: 80%; animation: cloud 7s linear infinite; animation-delay: 1.8s; }
+    .clouds .cloud:nth-child(3) { font-size: 2.5em; top: 20%; animation: cloud 5s linear infinite; animation-delay: 0.4s; }
+
+    @keyframes jet {
+      0% { left: 50%; }
+      50% { left: 52%; }
+      100% { left: 50%; }
+    }
+
+    @keyframes cloud {
+      0% { left: 100%; }
+      100% { left: -50%; }
+    }
+
+    @keyframes swing {
+      0% { transform: translate(-50%, -50%) rotate(-3deg); }
+      50% { transform: translate(-50%, -50%) rotate(3deg); }
+      100% { transform: translate(-50%, -50%) rotate(-3deg); }
+    }
+
+    #clock {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      font-weight: bold;
+      z-index: 10;
+      animation: swing 3s ease-in-out infinite;
+    }
+
+    #date {
+      position: fixed;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+    }
+
+    #music-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 20;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #social-icons {
+      position: fixed;
+      top: 70%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 10;
+    }
+
+    .icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .icon-label {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .icon-wrapper:hover {
+      transform: scale(1.5);
+    }
+
+    .icon-wrapper:hover .icon-label {
+      opacity: 1;
+    }
+
+    .discord-logo, .tiktok-logo {
+      width: 30px;
+      height: 30px;
+      transition: transform 0.3s;
+    }
+
+    .icon-wrapper:hover .discord-logo,
+    .icon-wrapper:hover .tiktok-logo {
+      transform: scale(1.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pilot-name">Phạm Hoàng Long</div>
+  <i class="fighter-jet fa fa-fighter-jet" aria-hidden="true"></i>
+
+  <div class="clouds">
+    <i class="cloud fa fa-cloud"></i>
+    <i class="cloud fa fa-cloud"></i>
+    <i class="cloud fa fa-cloud"></i>
+  </div>
+
+  <div id="clock">--:--:--</div>
+  <div id="date">--</div>
+
+  <div id="social-icons">
+    <!-- Discord -->
+    <div class="icon-wrapper">
+      <a href="https://discord.gg/bhS557Nu" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" class="discord-logo" alt="Discord">
+      </a>
+      <span class="icon-label">Discord</span>
+    </div>
+
+    <!-- Facebook -->
+    <div class="icon-wrapper">
+      <a href="https://m.facebook.com/hlong.pham.154276" target="_blank">
+        <i class="fa fa-facebook" style="font-size:28px; color:white;"></i>
+      </a>
+      <span class="icon-label">Facebook</span>
+    </div>
+
+    <!-- Gmail -->
+    <div class="icon-wrapper">
+      <a href="mailto:longphamhoang566@gmail.com">
+        <i class="fa fa-envelope" style="font-size:28px; color:white;"></i>
+      </a>
+      <span class="icon-label">Gmail</span>
+    </div>
+
+    <!-- TikTok -->
+    <div class="icon-wrapper">
+      <a href="https://tiktok.com/@hlongtwisted" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968815.png" class="tiktok-logo" alt="TikTok">
+      </a>
+      <span class="icon-label">TikTok</span>
+    </div>
+  </div>
+
+  <button id="music-toggle">Phát nhạc</button>
+  <audio id="background-music" loop>
+    <source src="Nhac.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ âm thanh.
+  </audio>
+
+  <div class="copyright">
+    © 2025 Phạm Hoàng Long. All rights reserved.
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').textContent = now.toLocaleTimeString('vi-VN');
+      document.getElementById('date').textContent = now.toLocaleDateString('vi-VN', {
+        weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit'
+      });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const music = document.getElementById('background-music');
+    const toggleBtn = document.getElementById('music-toggle');
+    toggleBtn.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        toggleBtn.textContent = 'Tắt nhạc';
+      } else {
+        music.pause();
+        toggleBtn.textContent = 'Phát nhạc';
+      }
+    });
+  </script>
+</body>
+</html>
